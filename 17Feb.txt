@@ -1,0 +1,48 @@
+# Multiplication of a number with its complement
+
+t=int(input())
+while t:
+    t-=1
+    n=int(input())
+    # print((bin(n).replace("0b","")))
+    sum=0
+    counter=0
+    for i in bin(n).replace("0b","")[::-1]:
+        if i=='0':
+            sum+=1*(2**counter)
+        counter+=1
+    print(sum*n)
+ 
+# Stand in Queue
+
+t=int(input())
+
+while t:
+    t-=1
+    dec=False
+    
+    nums=list(map(int,input().split()))
+    n=nums[0]
+    nums.pop(0)
+    inDiff=abs(nums[0]-nums[1])
+    for i in range(1,len(nums)-2):
+        diff=abs(nums[i]-nums[i+1])
+        if(i==1):
+            if(diff==inDiff+1):
+                dec=False
+            elif (diff==inDiff-1):
+                dec=True
+            else:
+                print("Incorrect Formation")
+                break
+        else:
+            if(dec and (not diff==inDiff-1)):
+                print("Incorrect Formation")
+                break
+            elif((not dec) and not diff==inDiff+1):
+                print("Incorrect Formation")
+        inDiff=diff
+    else:
+        print("Correct Formation")
+        
+ 
